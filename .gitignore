@@ -1,0 +1,12 @@
+# SwiftPM 构建产物
+.build/
+Package.resolved
+
+# Xcode / SwiftPM 本地状态
+*.xcodeproj
+*.xcworkspace
+.swiftpm/
+xcuserdata/
+
+# macOS
+.DS_Store

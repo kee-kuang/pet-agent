@@ -1,0 +1,47 @@
+Vivarium — PetAgent 桌宠运行时引擎
+Copyright 2026 The Vivarium Authors
+
+本产品按 Apache License 2.0 授权（见 LICENSE 文件）。
+
+────────────────────────────────────────────────────────────────────────
+致谢 / Acknowledgements
+────────────────────────────────────────────────────────────────────────
+
+Vivarium 是 clean-room 的 Swift 实现。下列开源项目启发了本引擎的**设计思路、
+算法、公式与数据约定**——这些部分由我们在 Swift 中**重新实现（逻辑/规范级，
+未拷贝任何上游源码）**。在此向各项目作者致谢。各项目以其自身许可证发布，
+版权归各自作者所有。
+
+桌宠行为 / Shimeji 生态
+  - Shijima-Qt            https://github.com/pixelomer/Shijima-Qt
+      两段式「引擎产纯数据 + 平台外壳装窗」分层蓝本；subtick 亚像素插值思路。
+  - Shimeji-Desktop       https://github.com/DalekCraft2/Shimeji-Desktop
+      行为加权抽样（buildNextBehavior）逻辑；action 物理公式（Fall/Jump/Dragged
+      /Look/Offset 等）参照其 Java 实现在 Swift 中重新推导，未拷贝源码。
+  - ShimejiEE-cross-platform  https://github.com/LavenderSnek/ShimejiEE-cross-platform
+      actions.xml 两遍式 lazy 引用解析结构。
+  - VShimeji (Shimeji-ee)  https://github.com/Valkryst/VShimeji
+      行为频率权重（Frequency 加权随机 + NextBehavior 转移）约定。
+
+Sprite / Codex 宠物生态
+  - petdex                https://github.com/crafter-station/petdex
+      spritesheet 状态表（STATES）约定与跨工具包格式；可信资源 host 白名单
+      （反 SSRF）思路。状态映射在 Swift 中重新实现，未拷贝源码。
+
+生命感 / 主动交互 / AI 助理
+  - HermesPet             https://github.com/basionwang-bot/HermesPet
+      LifeSigns 生命感（呼吸 / 眨眼 / 跳跃节奏）token；Markdown 渲染；AgentMode 模型。
+  - AccountyCat           https://github.com/strjonas/AccountyCat
+      主动建议气泡视觉与 chip 设计。
+  - agentpet              https://github.com/ntd4996/agentpet
+      应用内浏览 / 一键安装宠物；hook 事件 → 宠物情绪态映射。
+  - GodotDesktopPet       https://github.com/MeiTozawa/GodotDesktopPet
+      mood-weighted 动作选择思路。
+
+物理 / 渲染
+  - Snowfall              https://github.com/BarredEwe/Snowfall
+      falling-sand 混合「飞行粒子」雪的浮点粒子 buffer + compute 结构。
+  - plasmasnow            https://github.com/markcapella/plasmasnow
+      桌面积雪逐列高度（heightmap）堆积与列间平滑算法思路。
+  - godot                 https://github.com/godotengine/godot
+      GPU 粒子 / compute pipeline 组织参考。
